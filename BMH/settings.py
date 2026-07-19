@@ -57,6 +57,7 @@ MIDDLEWARE = [
     'silk.middleware.SilkyMiddleware',
 
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -121,6 +122,8 @@ DATABASES = {
         'PORT': config ('DB_PORT'),
     }
 }
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 FRONTEND_FORGOT_URL = config ('FRONTEND_FORGOT_URL')
 FRONTEND_ACTIVATE_URL = config ('FRONTEND_ACTIVATE_URL')
