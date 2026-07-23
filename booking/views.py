@@ -131,9 +131,9 @@ class TakeAppoinmentViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         user=self.request.user
 
-        if hasattr(user.role,'doctor'):
+        if user.role=='doctor':
             return Appoinment.objects.filter(doctor=user).select_related('patient')
-        if hasattr(user.role,'patient'):
+        if user.role=='patient':
             return Appoinment.objects.filter(patient=user).select_related('doctor')
         return Appoinment.objects.all().select_related('patient','doctor')
 
